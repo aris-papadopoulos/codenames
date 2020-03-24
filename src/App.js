@@ -1,6 +1,7 @@
 import React from 'react';
 import image from './agents.png';
-import './App.css';
+import { cards } from './cards';
+import './App.scss';
 
 function App() {
   return (
@@ -10,14 +11,12 @@ function App() {
           <code>Codenames</code>
         </p>
         <img src={image} className="image-logo" alt="logo" />
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+        <button className="create-game" onClick={createGame}>
           New Game
-        </a>
+        </button>
+        <button className="create-map" onClick={createMap}>
+          Create Map
+        </button>
       </header>
     </div>
   );
