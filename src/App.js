@@ -40,17 +40,15 @@ function pickCards() {
 
 function createMap() {
     // Define which team starts
-    let i, elemsArray = [], mapArray = [];
+    let  mapArray = [];
     const initNumber = Math.floor(Math.random() * 2);
     const initiator = (initNumber) ? 'blue' : 'red';
 
     // Create array of elements
-    const blue = (initiator === 'blue') ? 9 : 8;
-    const red = (initiator === 'red') ? 9 : 8;
-    for (i = 0; i < blue; i++) elemsArray.push(1);
-    for (i = 0; i < red; i++) elemsArray.push(2);
-    for (i = 0; i < 7; i++) elemsArray.push(3);
-    elemsArray.push(4);
+    // "arr" has 8 blue cards, 8 red, 7 neutral and 1 executor card. 
+    let elemsArray = [1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4];
+    // The last card depends on which team starts first (team who starts first has 1 more card)
+    (initiator === 'blue') ? elemsArray.push(1) : elemsArray.push(2)
     console.log(initiator);
 
     // Create random map array
