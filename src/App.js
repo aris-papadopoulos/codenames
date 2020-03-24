@@ -14,9 +14,6 @@ function App() {
         <button className="create-game" onClick={createGame}>
           New Game
         </button>
-        <button className="create-map" onClick={null}>
-          Create Map
-        </button>
       </header>
     </div>
   );
@@ -24,20 +21,46 @@ function App() {
 
 // Randomly picks 25 cards to start a new game
 function createGame() {
-    const gameCards = pickCards();
+    const cards = pickCards();
+    const map = createMap();
 
-    console.log(gameCards);
+    console.log(cards, map);
 }
 
 function pickCards() {
     let gameCards = [];
-    while (gameCards.length < 24) {
+    while (gameCards.length < 25) {
         const card = Math.floor(Math.random() * cards.length);
         if (!gameCards.includes(card)) {
             gameCards.push(card);
         }
     }
     return gameCards;
+}
+
+function createMap() {
+    // Define which team starts
+    let i, elemsArray = [], mapArray = [];
+    const initNumber = Math.floor(Math.random() * 2);
+    const initiator = (initNumber) ? 'blue' : 'red';
+
+    // Create array of elements
+    const blue = (initiator === 'blue') ? 9 : 8;
+    const red = (initiator === 'red') ? 9 : 8;
+    for (i = 0; i < blue; i++) elemsArray.push(1);
+    for (i = 0; i < red; i++) elemsArray.push(2);
+    for (i = 0; i < 7; i++) elemsArray.push(3);
+    elemsArray.push(4);
+    console.log(initiator);
+
+    // Create random map array
+    while (mapArray.length < 25) {
+        const index = Math.floor(Math.random() * elemsArray.length);
+        mapArray.push(elemsArray[index]);
+        elemsArray.splice(index, 1);
+    }
+
+    return mapArray;
 }
 
 export default App;
