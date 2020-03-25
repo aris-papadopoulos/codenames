@@ -5,12 +5,9 @@ import App from './App';
 import Game from './Game';
 import NotFound from './NotFound';
 import { Router, Route, Switch } from 'react-router-dom';
+import history from './utilities';
 import * as serviceWorker from './serviceWorker';
 
-// Needed for passing history object and create redirects within redux actions
-import { createBrowserHistory } from 'history';
-
-const history =  createBrowserHistory();
 
 ReactDOM.render(
     <React.StrictMode>

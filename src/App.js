@@ -1,6 +1,7 @@
 import React from 'react';
 import image from './agents.png';
 import { cards } from './cards';
+import history from './utilities';
 import './App.scss';
 
 function App() {
@@ -24,7 +25,11 @@ function createGame() {
     const cards = pickCards();
     const map = createMap();
 
-    console.log(cards, map);
+    var myJSON = JSON.stringify(cards);
+    const encodedGame = window.btoa(myJSON);
+
+    console.log(myJSON, encodedGame);
+    history.push(`/game/${encodedGame}`);
 }
 
 function pickCards() {
