@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { cards } from './cards';
-// import './game.scss';
+import './game.scss';
 
 const Game = (props) => {
 

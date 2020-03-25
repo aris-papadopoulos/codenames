@@ -1,0 +1,7 @@
+.cards-wrapper {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 80px);
+    grid-gap: 10px;
+    margin: 10px;
+}
