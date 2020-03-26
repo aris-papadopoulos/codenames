@@ -27,7 +27,6 @@ function createGame() {
     var myJSON = JSON.stringify(cards);
     const encodedGame = window.btoa(myJSON);
 
-    console.log(myJSON, encodedGame);
     history.push(`/game/${encodedGame}`);
 }
 

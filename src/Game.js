@@ -6,7 +6,6 @@ import './game.scss';
 const Game = (props) => {
 
     const [game, setGame] = useState(null);
-    const [key, setKey] = useState({});
     const prevGame = usePrevious(game);
 
     useEffect(() => {
@@ -14,8 +13,6 @@ const Game = (props) => {
         if (JSON.stringify(prevGame) !== JSON.stringify(game)) {
             const gameArray = decodeBase64(id);
             setGame(gameArray);
-            const key = createKey();
-            setKey(key);
         }
     }, [props.match.params, prevGame, game]);
     
@@ -29,7 +26,7 @@ const Game = (props) => {
                     })
                     : null}
                 </div>
-                <Key data={key.array} initiator={key.init} />
+                <Key />
             </header>
         </div>
     );
@@ -42,31 +39,6 @@ function decodeBase64(string) {
     return gameArray;
 }
 
-function createKey() {
-    // Define which team starts
-    let  keyArray = [];
-    const initNumber = Math.floor(Math.random() * 2);
-    const initiator = (initNumber) ? 'blue' : 'red';
-
-    // Create array of elements
-    // "arr" has 8 blue cards, 8 red, 7 neutral and 1 executor card. 
-    let elemsArray = [1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4];
-    // The last card depends on which team starts first (team who starts first has 1 more card)
-    (initiator === 'blue') ? elemsArray.push(1) : elemsArray.push(2)
-    console.log(initiator);
-
-    // Create random map array
-    while (keyArray.length < 25) {
-        const index = Math.floor(Math.random() * elemsArray.length);
-        keyArray.push(elemsArray[index]);
-        elemsArray.splice(index, 1);
-    }
-
-    return {
-        array: keyArray,
-        init: initiator
-    }
-}
 
 // Hook - Used to keep prevProps on functional components
 function usePrevious(value) {
