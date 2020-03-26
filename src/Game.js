@@ -6,7 +6,7 @@ import './game.scss';
 const Game = (props) => {
 
     const [game, setGame] = useState(null);
-    const [key, setKey] = useState(null);
+    const [key, setKey] = useState({});
     const prevGame = usePrevious(game);
 
     useEffect(() => {
@@ -29,7 +29,7 @@ const Game = (props) => {
                     })
                     : null}
                 </div>
-                <Key data={key} />
+                <Key data={key.array} initiator={key.init} />
             </header>
         </div>
     );
@@ -62,7 +62,10 @@ function createKey() {
         elemsArray.splice(index, 1);
     }
 
-    return keyArray;
+    return {
+        array: keyArray,
+        init: initiator
+    }
 }
 
 // Hook - Used to keep prevProps on functional components
