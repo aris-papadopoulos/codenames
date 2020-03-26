@@ -1,10 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { cards } from './cards';
+import Key from './Key';
+import Card from './Card';
 import './game.scss';
 
 const Game = (props) => {
 
     const [game, setGame] = useState(null);
+    const [key, setKey] = useState(null);
     const prevGame = usePrevious(game);
 
     useEffect(() => {
@@ -12,8 +14,10 @@ const Game = (props) => {
         if (JSON.stringify(prevGame) !== JSON.stringify(game)) {
             const gameArray = decodeBase64(id);
             setGame(gameArray);
+            const key = createKey();
+            setKey(key);
         }
-    });
+    }, [props.match.params, prevGame, game]);
     
     return (
         <div className="App">
@@ -21,10 +25,11 @@ const Game = (props) => {
                 <div className="cards-wrapper">
                     {(game) ?
                     game.map(i => {
-                        return <span key={i}>{cards[i]}</span>
+                        return <Card key={i} index={i} />
                     })
                     : null}
                 </div>
+                <Key data={key} />
             </header>
         </div>
     );
@@ -35,6 +40,29 @@ function decodeBase64(string) {
     const gameArray = JSON.parse(decodedString);
 
     return gameArray;
+}
+
+function createKey() {
+    // Define which team starts
+    let  keyArray = [];
+    const initNumber = Math.floor(Math.random() * 2);
+    const initiator = (initNumber) ? 'blue' : 'red';
+
+    // Create array of elements
+    // "arr" has 8 blue cards, 8 red, 7 neutral and 1 executor card. 
+    let elemsArray = [1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 4];
+    // The last card depends on which team starts first (team who starts first has 1 more card)
+    (initiator === 'blue') ? elemsArray.push(1) : elemsArray.push(2)
+    console.log(initiator);
+
+    // Create random map array
+    while (keyArray.length < 25) {
+        const index = Math.floor(Math.random() * elemsArray.length);
+        keyArray.push(elemsArray[index]);
+        elemsArray.splice(index, 1);
+    }
+
+    return keyArray;
 }
 
 // Hook - Used to keep prevProps on functional components
