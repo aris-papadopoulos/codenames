@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { decodeBase64 } from './utilities';
 import Key from './Key';
 import Card from './Card';
 import './game.scss';
@@ -30,13 +31,6 @@ const Game = (props) => {
             </header>
         </div>
     );
-}
-
-function decodeBase64(string) {
-    const decodedString = window.atob(string);
-    const gameArray = JSON.parse(decodedString);
-
-    return gameArray;
 }
 
 
