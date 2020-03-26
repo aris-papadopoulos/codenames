@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import { decodeBase64 } from './utilities';
 import './key.scss';
 
 const initialKey = {encoded: ''};
@@ -19,6 +20,23 @@ const Key = () => {
         setKey(key);
     }
 
+    const decodeKey = (key) => {
+        const decodedKey = decodeBase64(key);
+        console.log(key, decodedKey);
+        setKey(decodedKey);
+        setButtonSelection(1);
+    }
+
+    const copyToClipboard = (text) => {
+        console.log(text);
+        try {
+            navigator.clipboard.writeText(key.encoded)
+        }
+        catch(err) {
+            alert('Uh oh!')
+        }
+    }
+
     const renderButton = () => {
         if (!buttonSelection) {
             return  <>
@@ -28,14 +46,14 @@ const Key = () => {
         }
         else if (buttonSelection === 1) {
             return  <>
-                        <button onClick={navigator.clipboard.writeText(key.encoded)}>Αντιγραφή</button>
+                        <button onClick={() => copyToClipboard(key.encoded)}>Αντιγραφή</button>
                         <button onClick={() => { setButtonSelection(false); setKey(initialKey) }}>Επαναφορά</button>
                     </>
         }
         else if (buttonSelection === 2) {
             return  <>
                         <input type="text" className="key__code" value={insertion} onChange={e => setInsertion(e.target.value)}/>
-                        <button onClick={null} className="go">OK</button>                        
+                        <button onClick={() => decodeKey(insertion)} className="go">OK</button>                        
                         <button onClick={() => { setButtonSelection(false); }}>Πίσω</button>
                     </>
         }
