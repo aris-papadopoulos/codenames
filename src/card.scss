@@ -1,0 +1,17 @@
+.card {
+    position: relative;
+    &__word {
+        position: absolute;
+        z-index: 1;
+        top: 74px;
+        left: 0;
+        font-size: 15px;
+        font-weight: 700;
+        color: #333;
+        text-align: center;
+        width: 100%;
+    }
+    img {
+        border-radius: 10px;
+    }
+}
