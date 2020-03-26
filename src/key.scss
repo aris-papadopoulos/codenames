@@ -1,5 +1,8 @@
 .key {
     margin: 10px;
+    &-wrapper {
+        display: flex;
+    }
     &__outer {
         padding: 24px;
         border-radius: 12px;
@@ -108,6 +111,41 @@
             &.right {
                 right: -22px;
             }
+        }
+    }
+    &-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 160px;
+        button, input {
+            border: 0;
+            margin: 4px;
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            padding: 0 30px;
+            line-height: 30px;
+            display: inline-block;
+            position: relative;
+            border-radius: 20px;
+            outline: none;
+            background: linear-gradient(#335b71 45%, #03324c 55%);
+            box-shadow: 0 2px 2px #888888;
+            transition: color 0.5s, background 0.5s;
+            &:hover {
+                background: linear-gradient(#b1ccda 49%, #96b4c5 51%);
+                color: #03324c;
+            }
+        }
+        input {
+            font-size: 9px;
+            background: linear-gradient(#b1ccda 49%, #96b4c5 51%);
+            color: #03324c;
+            cursor: initial;
         }
     }
 }
