@@ -2,6 +2,12 @@
     margin: 10px;
     &-wrapper {
         display: flex;
+        flex-direction: column;
+        h2 {
+            font-size: 24px;
+            font-weight: 400;
+            margin: 10px;
+        }
     }
     &__outer {
         padding: 24px;
@@ -115,9 +121,8 @@
     }
     &-form {
         display: flex;
-        flex-direction: column;
         justify-content: center;
-        width: 160px;
+        position: relative;
         button, input {
             border: 0;
             margin: 4px;
@@ -142,10 +147,18 @@
             }
         }
         input {
+            width: 148px;
             font-size: 9px;
             background: linear-gradient(#b1ccda 49%, #96b4c5 51%);
             color: #03324c;
             cursor: initial;
+        }
+        .go { 
+            width: 40px;
+            border-radius: 0 20px 20px 0;
+            padding: 0;
+            margin-left: -40px;
+            margin-right: 20px;
         }
     }
 }

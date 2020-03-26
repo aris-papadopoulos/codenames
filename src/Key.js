@@ -1,56 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import './key.scss';
 
+const initialKey = {encoded: ''};
+
 const Key = () => {
     
-    const [key, setKey] = useState({encoded: ''});
-
-    useEffect(() => {
-        if (!key.array) {
-            createKey();
-        }
-    }, [key, setKey]);
+    const [key, setKey] = useState(initialKey);
+    const [buttonSelection, setButtonSelection] = useState(false);
+    const [insertion, setInsertion] = useState('');
 
     const createKey = () => {
         let key = createNewKey();
-        console.log(key);
 
         var myJSON = JSON.stringify(key);
         const encoded = window.btoa(myJSON);
         key = {...key, encoded}
 
-        console.log(key);
-
         setKey(key);
+    }
+
+    const renderButton = () => {
+        if (!buttonSelection) {
+            return  <>
+                        <button onClick={() => { setButtonSelection(1); createKey() }}>Δημιουργία</button>
+                        <button onClick={() => setButtonSelection(2)}>Εισαγωγή</button>
+                    </>
+        }
+        else if (buttonSelection === 1) {
+            return  <>
+                        <button onClick={null}>Αντιγραφή</button>
+                        <button onClick={() => { setButtonSelection(false); setKey(initialKey) }}>Επαναφορά</button>
+                    </>
+        }
+        else if (buttonSelection === 2) {
+            return  <>
+                        <input type="text" className="key__code" value={insertion} onChange={e => setInsertion(e.target.value)}/>
+                        <button onClick={null} className="go">OK</button>                        
+                        <button onClick={() => { setButtonSelection(false); }}>Πίσω</button>
+                    </>
+        }
     }
 
     return (
         <div className="key-wrapper">
-            <div className="key">
-                <div className="key__outer">
-                    <div className="key__inner">
-                        {(key.array) ?
-                            key.array.map((el, i) => {
-                                let classValue;
-                                if      (el === 1) { classValue = 'blue' }
-                                else if (el === 2) { classValue = 'red' }
-                                else if (el === 3) { classValue = 'neutral' }
-                                else if (el === 4) { classValue = 'executor' }
-                            return <span key={i} className={`key-element ${classValue}`}></span>
-                        })
-                        : null}
-                            <span className={`indicator ${key.init} top`}></span>
-                            <span className={`indicator ${key.init} bottom`}></span>
-                            <span className={`indicator ${key.init} left`}></span>
-                            <span className={`indicator ${key.init} right`}></span>
+            <h2>Κλειδί αρχικατάσκοπου</h2>
+            <div className="key-form">
+                {renderButton()}
+            </div>
+            {(key.array) ?
+                <div className="key">
+                    <div className="key__outer">
+                            <div className="key__inner">
+                                {key.array.map((el, i) => {
+                                        let classValue;
+                                        if      (el === 1) { classValue = 'blue' }
+                                        else if (el === 2) { classValue = 'red' }
+                                        else if (el === 3) { classValue = 'neutral' }
+                                        else if (el === 4) { classValue = 'executor' }
+                                    return <span key={i} className={`key-element ${classValue}`}></span>
+                                })}
+                                <span className={`indicator ${key.init} top`}></span>
+                                <span className={`indicator ${key.init} bottom`}></span>
+                                <span className={`indicator ${key.init} left`}></span>
+                                <span className={`indicator ${key.init} right`}></span>
+                            </div>
                     </div>
                 </div>
-            </div>
-            <div className="key-form">
-                <button onClick={() => createKey()}>Δημιουργία</button>
-                <button>Εισαγωγή</button>
-                <input type="text" className="key__code" defaultValue={key.encoded} onChange={null} />
-            </div>
+            : null}
         </div>
     );
 }
