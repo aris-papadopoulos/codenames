@@ -28,7 +28,7 @@ const Key = () => {
         }
         else if (buttonSelection === 1) {
             return  <>
-                        <button onClick={null}>Αντιγραφή</button>
+                        <button onClick={navigator.clipboard.writeText(key.encoded)}>Αντιγραφή</button>
                         <button onClick={() => { setButtonSelection(false); setKey(initialKey) }}>Επαναφορά</button>
                     </>
         }
