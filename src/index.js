@@ -4,6 +4,7 @@ import './index.scss';
 import App from './App';
 import Game from './Game';
 import NotFound from './NotFound';
+import { ToastProvider } from 'react-toast-notifications';
 import { Router, Route, Switch } from 'react-router-dom';
 import history from './utilities';
 import * as serviceWorker from './serviceWorker';
@@ -11,13 +12,15 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <React.StrictMode>
-        <Router history={history}>
-            <Switch>
-                <Route exact path="/game/:id" component={Game} />
-                <Route exact path="/" component={App} />
-                <Route path="*" component={NotFound} />
-            </Switch>
-        </Router>
+        <ToastProvider autoDismissTimeout={2000} placement={'bottom-right'}>
+            <Router history={history}>
+                <Switch>
+                    <Route exact path="/game/:id" component={Game} />
+                    <Route exact path="/" component={App} />
+                    <Route path="*" component={NotFound} />
+                </Switch>
+            </Router>
+        </ToastProvider>
     </React.StrictMode>,
     document.getElementById('root')
 );

@@ -1,7 +1,31 @@
+.Game-header {
+    display: flex;
+    // justify-content: space-between;
+    align-items: center;
+    max-width: calc((5 * 191px) + (4 * 10px));
+    margin: auto;
+    padding: 6px 0;
+    text-align: left;
+    button {
+        color: #fff;
+        background-color: transparent;
+        padding: 10px;
+        font-family: fantasy;
+        font-size: 16px;
+        border: 2px solid transparent;
+        transition: border .2s;
+        margin-right: 20px;
+        &:hover {
+            border: 2px solid #fff;
+        }
+    }
+}
+
 .cards-wrapper {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 120px);
     grid-gap: 10px;
-    margin: 10px;
+    margin: auto;
+    max-width: calc((5 * 191px) + (4 * 10px));
 }
