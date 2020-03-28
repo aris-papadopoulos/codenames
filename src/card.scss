@@ -1,5 +1,6 @@
 .card {
     position: relative;
+    cursor: pointer;
     &__word {
         position: absolute;
         z-index: 1;
