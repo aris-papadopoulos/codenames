@@ -51,7 +51,7 @@ const Card = (props) => {
     return (
         <div className="card" onClick={() => changeCard()}>
             <img src={showCard()} alt="card" />
-            <span className="card__word">{(!card) ? cards[props.index] : null}</span>
+            <span className="card__word">{(!card) ? cards[props.lang][props.index] : null}</span>
         </div>
     );
 }

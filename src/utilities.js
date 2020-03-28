@@ -11,10 +11,10 @@ export function decodeBase64(string) {
 }
 
 // Randomly picks 25 cards
-function pickCards() {
+function pickCards(lang) {
     let gameCards = [];
     while (gameCards.length < 25) {
-        const card = Math.floor(Math.random() * cards.length);
+        const card = Math.floor(Math.random() * cards[lang].length);
         if (!gameCards.includes(card)) {
             gameCards.push(card);
         }
@@ -23,8 +23,8 @@ function pickCards() {
 }
 
 // Encodes picked cards and starts a new game
-export function encodeGame() {
-    const cards = pickCards();
+export function encodeGame(lang) {
+    const cards = pickCards(lang);
 
     var myJSON = JSON.stringify(cards);
     const encodedGame = window.btoa(myJSON);

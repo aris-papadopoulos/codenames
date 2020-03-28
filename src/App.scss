@@ -1,22 +1,17 @@
 .App {
-  text-align: center;
-  background: radial-gradient(#fdda06 5%, #711146 95%);
-  min-height: 100vh;
+    text-align: center;
+    background: radial-gradient(#fdda06 5%, #711146 95%);
+    min-height: 100vh;
 }
 
-// .App-logo {
-//   height: 40vmin;
-//   pointer-events: none;
-// }
-
 .App-header {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .image-logo {
@@ -36,32 +31,60 @@
     border: 6px solid transparent;
     transition: border .2s;
     &:hover {
-      border: 6px solid #fff;
-  }
+        border: 6px solid #fff;
+    }
+}
+
+.language {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 260px;
+    p {
+        font-family: fantasy;
+        font-size: 30px;
+        text-shadow: 1px 1px 4px black;
+    }
+    button {
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        box-shadow: 1px 1px 4px black;
+        border: 0;
+        border-radius: 50%;
+        margin-left: 20px;
+    }
+    img {
+        filter: grayscale(100%);
+        transition: filter .3s;
+        &.active {
+            filter: grayscale(0%);
+        }
+    }
 }
 
 .typewriter {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 .typewriter code {
-  font-family: monospace;
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typewriter cursor */
-  padding-right: 10px;
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
-  letter-spacing: .05em; /* Adjust as needed */
+    font-family: monospace;
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .15em solid orange; /* The typewriter cursor */
+    padding-right: 10px;
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .05em; /* Adjust as needed */
 }
 
 /* The typing effect */
 @keyframes typing {
-  from { width: 0 }
-  to { width: 100% }
+    from { width: 0 }
+    to { width: 100% }
 }
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: orange; }
+    from, to { border-color: transparent }
+    50% { border-color: orange; }
 }

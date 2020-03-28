@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
 import { history, encodeGame, decodeBase64 } from './utilities';
+import { texts } from './texts';
 import Key from './Key';
 import Card from './Card';
 import './game.scss';
@@ -11,7 +12,7 @@ const Game = (props) => {
     const { addToast } = useToasts();
 
     const [game, setGame] = useState(null);
-    const { id } = props.match.params;
+    const { lang, id } = props.match.params;
     const prevID = usePrevious(id);
 
     useEffect(() => {
@@ -22,40 +23,39 @@ const Game = (props) => {
         }
     }, [props.match.params, prevID]);
     
-    const createNewGame = () => {
-        const encodedGame = encodeGame();
-        history.push(`/game/${encodedGame}`);
+    const createNewGame = (lang) => {
+        const encodedGame = encodeGame(lang);
+        history.push(`/game/${lang}/${encodedGame}`);
     }
 
-    const copyToClipboard = (text) => {
+    const copyToClipboard = () => {
         try {
             navigator.clipboard.writeText(window.location.href);
-            addToast('Το URL αντιγράφηκε στο clipboard. Τώρα μπορείτε να το μοιράσετε στους συμπαίκτες σας', { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 })
+            addToast(texts[lang].copyURLsuccess, { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 })
         }
         catch(err) {
-            addToast('Σφάλμα αντιγραφής URL', { appearance: 'error' })
+            addToast(texts[lang].copyURLfail, { appearance: 'error' })
         }
     }
 
     return (
         <div className="App">
             <header className="Game-header">
-                {/* <code>{title}</code> */}
-                <Link className="link" to={'/'}>Αρχική</Link>
+                <Link className="link" to={'/'}>{texts[lang].homepage}</Link>
                 <div>
-                    <button onClick={() => createNewGame()}>Νέο παιχνίδι</button>
-                    <button onClick={() => copyToClipboard()}>Αντιγραφή URL</button>
+                    <button onClick={() => createNewGame(lang)}>{texts[lang].newGame}</button>
+                    <button onClick={() => copyToClipboard()}>{texts[lang].copyURL}</button>
                 </div>
             </header>
             <main>
                 <div className="cards-wrapper">
                     {(game) ?
                     game.map(i => {
-                        return <Card key={i} index={i} />
+                        return <Card key={i} lang={lang} index={i} />
                     })
                     : null}
                 </div>
-                <Key />
+                <Key lang={lang} />
             </main>
         </div>
     );

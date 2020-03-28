@@ -15,7 +15,7 @@ ReactDOM.render(
         <ToastProvider autoDismissTimeout={2000} placement={'bottom-right'}>
             <Router history={history}>
                 <Switch>
-                    <Route exact path="/game/:id" component={Game} />
+                    <Route exact path="/game/:lang/:id" component={Game} />
                     <Route exact path="/" component={App} />
                     <Route path="*" component={NotFound} />
                 </Switch>

@@ -1,18 +1,21 @@
 import React, { useState } from 'react';
 import { decodeBase64 } from './utilities';
-import './key.scss';
 import { useToasts } from 'react-toast-notifications';
+import { texts } from './texts';
+import './key.scss';
 
 
 const initialKey = {encoded: ''};
 
-const Key = () => {
+const Key = (props) => {
+
+    const { lang } = props;
     
     const [key, setKey] = useState(initialKey);
     const [buttonSelection, setButtonSelection] = useState(false);
     const [insertion, setInsertion] = useState('');
 
-    const { addToast } = useToasts()
+    const { addToast } = useToasts();
 
     const createKey = () => {
         let key = createNewKey();
@@ -26,47 +29,45 @@ const Key = () => {
 
     const decodeKey = (key) => {
         const decodedKey = decodeBase64(key);
-        console.log(key, decodedKey);
         setKey(decodedKey);
         setButtonSelection(1);
     }
 
-    const copyToClipboard = (text) => {
-        console.log(text);
+    const copyToClipboard = () => {
         try {
             navigator.clipboard.writeText(key.encoded);
-            addToast('Επιτυχής αντιγραφή στο clipboard', { appearance: 'success', autoDismiss: true })
+            addToast(texts[lang].copyKeySuccess, { appearance: 'success', autoDismiss: true })
         }
         catch(err) {
-            addToast('Σφάλμα αντιγραφής', { appearance: 'error' })
+            addToast(texts[lang].copyKeyFail, { appearance: 'error' })
         }
     }
 
     const renderButton = () => {
         if (!buttonSelection) {
             return  <>
-                        <button onClick={() => { setButtonSelection(1); createKey() }}>Δημιουργία</button>
-                        <button onClick={() => setButtonSelection(2)}>Εισαγωγή</button>
+                        <button onClick={() => { setButtonSelection(1); createKey() }}>{texts[lang].create}</button>
+                        <button onClick={() => setButtonSelection(2)}>{texts[lang].insert}</button>
                     </>
         }
         else if (buttonSelection === 1) {
             return  <>
-                        <button onClick={() => copyToClipboard(key.encoded)}>Αντιγραφή</button>
-                        <button onClick={() => { setButtonSelection(false); setKey(initialKey) }}>Επαναφορά</button>
+                        <button onClick={() => copyToClipboard(key.encoded)}>{texts[lang].copy}</button>
+                        <button onClick={() => { setButtonSelection(false); setKey(initialKey) }}>{texts[lang].reset}</button>
                     </>
         }
         else if (buttonSelection === 2) {
             return  <>
                         <input type="text" className="key__code" value={insertion} onChange={e => setInsertion(e.target.value)}/>
-                        <button onClick={() => decodeKey(insertion)} className="go">OK</button>                        
-                        <button onClick={() => { setButtonSelection(false); }}>Πίσω</button>
+                        <button onClick={() => decodeKey(insertion)} className="go">{texts[lang].ok}</button>                        
+                        <button onClick={() => { setButtonSelection(false); }}>{texts[lang].back}</button>
                     </>
         }
     }
 
     return (
         <div className="key-wrapper">
-            <h2>Κλειδί αρχικατάσκοπου</h2>
+            <h2>{texts[lang].spymasterKey}</h2>
             <div className="key-form">
                 {renderButton()}
             </div>
