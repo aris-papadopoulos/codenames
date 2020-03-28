@@ -12,7 +12,7 @@ function App() {
         <div className="App">
             <header className="App-header">
                 <div className="typewriter">
-                    <code style={{animation: `typing 2.75s steps(${title.length * 2}, end), blink-caret .75s step-end infinite`}}>{title}</code>
+                    <code style={{animation: `typing 2.5s steps(${title.length * 2}, end), blink-caret .75s step-end infinite`}}>{title}</code>
                 </div>
                 <img src={image} className="image-logo" alt="logo" />
                 <button className="create-game" onClick={createNewGame}>{newGame}</button>

@@ -19,6 +19,10 @@
   color: white;
 }
 
+.image-logo {
+  height: 480px;
+}
+
 .create-game {
     color: #fff;
     background: none;
@@ -29,7 +33,6 @@
     font-family: fantasy;
     letter-spacing: .02em;
     text-shadow: 1px 1px 4px black;
-    border-radius: 16px;
     border: 6px solid transparent;
     transition: border .2s;
     &:hover {
@@ -44,7 +47,8 @@
 .typewriter code {
   font-family: monospace;
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange; /* The typwriter cursor */
+  border-right: .15em solid orange; /* The typewriter cursor */
+  padding-right: 10px;
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: .05em; /* Adjust as needed */
