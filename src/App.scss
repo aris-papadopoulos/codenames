@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  background: radial-gradient(#fdda06 5%, #711146 95%);
+  min-height: 100vh;
 }
 
 // .App-logo {
@@ -8,7 +10,6 @@
 // }
 
 .App-header {
-  background: radial-gradient(#fdda06 5%, #711146 95%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,17 +19,13 @@
   color: white;
 }
 
-button {
-  cursor: pointer;
-}
-
 .create-game {
     color: #fff;
-    font-size: 48px;
     background: none;
+    border: 0;
     padding: 0 16px;
     margin-top: .5em;
-    border: 0;
+    font-size: 48px;
     font-family: fantasy;
     letter-spacing: .02em;
     text-shadow: 1px 1px 4px black;
@@ -37,7 +34,7 @@ button {
     transition: border .2s;
     &:hover {
       border: 6px solid #fff;
-    }
+  }
 }
 
 .typewriter {
