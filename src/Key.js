@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { decodeBase64 } from './utilities';
 import './key.scss';
+import { useToasts } from 'react-toast-notifications';
+
 
 const initialKey = {encoded: ''};
 
@@ -9,6 +11,8 @@ const Key = () => {
     const [key, setKey] = useState(initialKey);
     const [buttonSelection, setButtonSelection] = useState(false);
     const [insertion, setInsertion] = useState('');
+
+    const { addToast } = useToasts()
 
     const createKey = () => {
         let key = createNewKey();
@@ -30,10 +34,11 @@ const Key = () => {
     const copyToClipboard = (text) => {
         console.log(text);
         try {
-            navigator.clipboard.writeText(key.encoded)
+            navigator.clipboard.writeText(key.encoded);
+            addToast('Επιτυχής αντιγραφή στο clipboard', { appearance: 'success', autoDismiss: true })
         }
         catch(err) {
-            alert('Uh oh!')
+            addToast('Σφάλμα αντιγραφής', { appearance: 'error' })
         }
     }
 
