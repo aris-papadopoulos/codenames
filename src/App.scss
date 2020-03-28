@@ -2,16 +2,10 @@
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+// .App-logo {
+//   height: 40vmin;
+//   pointer-events: none;
+// }
 
 .App-header {
   background: radial-gradient(#fdda06 5%, #711146 95%);
@@ -24,17 +18,49 @@
   color: white;
 }
 
-.create-game {
-  color: #333;
-  font-size: 20px;
-  padding: 10px;
+button {
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.create-game {
+    color: #fff;
+    font-size: 48px;
+    background: none;
+    padding: 0 16px;
+    margin-top: .5em;
+    border: 0;
+    font-family: fantasy;
+    letter-spacing: .02em;
+    text-shadow: 1px 1px 4px black;
+    border-radius: 16px;
+    border: 6px solid transparent;
+    transition: border .2s;
+    &:hover {
+      border: 6px solid #fff;
+    }
+}
+
+.typewriter {
+  display: flex;
+  justify-content: center;
+}
+.typewriter code {
+  font-family: monospace;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .05em; /* Adjust as needed */
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
 }
