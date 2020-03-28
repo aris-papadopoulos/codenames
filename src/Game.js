@@ -1,35 +1,39 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
-import { decodeBase64 } from './utilities';
+import { history, encodeGame, decodeBase64 } from './utilities';
 import Key from './Key';
 import Card from './Card';
 import './game.scss';
-
-const title = 'Κωδική ονομασία';
 
 const Game = (props) => {
     
     const { addToast } = useToasts();
 
     const [game, setGame] = useState(null);
-    const prevGame = usePrevious(game);
+    const { id } = props.match.params;
+    const prevID = usePrevious(id);
 
     useEffect(() => {
         const { id } = props.match.params;
-        if (JSON.stringify(prevGame) !== JSON.stringify(game)) {
+        if (prevID !== id) {
             const gameArray = decodeBase64(id);
             setGame(gameArray);
         }
-    }, [props.match.params, prevGame, game]);
+    }, [props.match.params, prevID]);
     
+    const createNewGame = () => {
+        const encodedGame = encodeGame();
+        history.push(`/game/${encodedGame}`);
+    }
+
     const copyToClipboard = (text) => {
-        console.log(text);
         try {
             navigator.clipboard.writeText(window.location.href);
-            addToast('Το URL αντιγράφηκε στο clipboard. Τώρα μπορείτε να το μοιράσετε στους συμπαίκτες σας', { appearance: 'success', autoDismiss: true })
+            addToast('Το URL αντιγράφηκε στο clipboard. Τώρα μπορείτε να το μοιράσετε στους συμπαίκτες σας', { appearance: 'success', autoDismiss: true, autoDismissTimeout: 3000 })
         }
         catch(err) {
-            addToast('Σφάλμα αντιγραφής', { appearance: 'error' })
+            addToast('Σφάλμα αντιγραφής URL', { appearance: 'error' })
         }
     }
 
@@ -37,8 +41,11 @@ const Game = (props) => {
         <div className="App">
             <header className="Game-header">
                 {/* <code>{title}</code> */}
-                    <button onClick={null}>Νέο παιχνίδι</button>
+                <Link className="link" to={'/'}>Αρχική</Link>
+                <div>
+                    <button onClick={() => createNewGame()}>Νέο παιχνίδι</button>
                     <button onClick={() => copyToClipboard()}>Αντιγραφή URL</button>
+                </div>
             </header>
             <main>
                 <div className="cards-wrapper">

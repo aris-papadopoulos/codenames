@@ -6,7 +6,7 @@ import Game from './Game';
 import NotFound from './NotFound';
 import { ToastProvider } from 'react-toast-notifications';
 import { Router, Route, Switch } from 'react-router-dom';
-import history from './utilities';
+import { history } from './utilities';
 import * as serviceWorker from './serviceWorker';
 
 
