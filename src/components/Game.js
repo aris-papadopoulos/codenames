@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useToasts } from 'react-toast-notifications';
-import { history, encodeGame, decodeBase64 } from './utilities';
-import { texts } from './texts';
+import { history, encodeGame, decodeBase64 } from '../utilities';
+import { texts } from '../texts';
 import Key from './Key';
 import Card from './Card';
-import './styles/game.scss';
+import '../styles/game.scss';
 
 const Game = (props) => {
     

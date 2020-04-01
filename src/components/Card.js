@@ -1,18 +1,18 @@
 import React, { useState } from 'react';
-import './styles/card.scss';
-import { cards } from './cards';
-import word from './assets/cards/word.jpg';
-import blue_00 from './assets/cards/coder-blue-00.jpg';
-import blue_01 from './assets/cards/coder-blue-01.jpg';
-import blue_02 from './assets/cards/coder-blue-02.jpg';
-import blue_03 from './assets/cards/coder-blue-03.jpg';
-import red_00 from './assets/cards/coder-red-00.jpg';
-import red_01 from './assets/cards/coder-red-01.jpg';
-import red_02 from './assets/cards/coder-red-02.jpg';
-import red_03 from './assets/cards/coder-red-03.jpg';
-import civilian_00 from './assets/cards/civilian-00.jpg';
-import civilian_01 from './assets/cards/civilian-01.jpg';
-import hacker from './assets/cards/hacker.jpg';
+import '../styles/card.scss';
+import { cards } from '../cards';
+import word from '../assets/cards/word.jpg';
+import blue_00 from '../assets/cards/coder-blue-00.jpg';
+import blue_01 from '../assets/cards/coder-blue-01.jpg';
+import blue_02 from '../assets/cards/coder-blue-02.jpg';
+import blue_03 from '../assets/cards/coder-blue-03.jpg';
+import red_00 from '../assets/cards/coder-red-00.jpg';
+import red_01 from '../assets/cards/coder-red-01.jpg';
+import red_02 from '../assets/cards/coder-red-02.jpg';
+import red_03 from '../assets/cards/coder-red-03.jpg';
+import civilian_00 from '../assets/cards/civilian-00.jpg';
+import civilian_01 from '../assets/cards/civilian-01.jpg';
+import hacker from '../assets/cards/hacker.jpg';
 
 const Card = (props) => {
 

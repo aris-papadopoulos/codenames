@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import main from './assets/main.png';
-import gr from './assets/flags/greece.svg';
-import uk from './assets/flags/uk.svg';
-import { texts } from './texts';
-import { history, encodeGame } from './utilities';
-import './styles/app.scss';
+import main from '../assets/main.png';
+import gr from '../assets/flags/greece.svg';
+import uk from '../assets/flags/uk.svg';
+import { texts } from '../texts';
+import { history, encodeGame } from '../utilities';
+import '../styles/app.scss';
 
 function App() {
     

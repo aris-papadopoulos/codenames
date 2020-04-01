@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
-import App from './App';
-import Game from './Game';
-import NotFound from './NotFound';
+import App from './components/App';
+import Game from './components/Game';
+import NotFound from './components/NotFound';
 import { ToastProvider } from 'react-toast-notifications';
 import { Router, Route, Switch } from 'react-router-dom';
 import { history } from './utilities';
