@@ -1,7 +1,9 @@
 // Needed for passing history object and create redirects within redux actions
 import { cards } from './cards.js';
-import { createBrowserHistory } from 'history';
-export const history = createBrowserHistory();
+// import { createBrowserHistory } from 'history';
+// export const history = createBrowserHistory();
+import createHashHistory from 'history/createHashHistory';
+export const history = createHashHistory();
 
 
 export function decodeBase64(string) {
