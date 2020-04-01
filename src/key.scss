@@ -5,6 +5,7 @@
         flex-direction: column;
         align-items: center;
         h2 {
+            color: #4a0c35;
             font-size: 24px;
             font-weight: 400;
             margin: 10px;
@@ -141,14 +142,13 @@
             border-radius: 10px;
             outline: none;
             // background: linear-gradient(#335b71 45%, #03324c 55%);
-            background: linear-gradient(#436273 45%, #1d3542 55%);
-            box-shadow: 0 2px 2px #888888;
+            background: linear-gradient(#711146  45%, #511140 55%);
+            box-shadow: 0 2px 2px #711146;
             transition: color 0.5s, background 0.5s;
+        }
+        button {
             &:hover {
-                // background: linear-gradient(#b1ccda 49%, #96b4c5 51%);
-                background: linear-gradient(#c0c9ce 49%, #9eb3bf 51%);
-                // color: #03324c;
-                color: #1d3542;
+                background: linear-gradient(#4a0c35 49%, #2c042a  51%);
             }
         }
         input {
@@ -165,11 +165,6 @@
             padding: 0;
             margin-left: -48px;
             margin-right: 20px;
-            &:hover {
-                color: #fff;
-                background: linear-gradient(#436273 45%, #1d3542 55%);
-                box-shadow: 0 2px 2px #888888;
-            }
         }
     }
 }
