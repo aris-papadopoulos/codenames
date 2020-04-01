@@ -5,7 +5,7 @@ import { history, encodeGame, decodeBase64 } from './utilities';
 import { texts } from './texts';
 import Key from './Key';
 import Card from './Card';
-import './game.scss';
+import './styles/game.scss';
 
 const Game = (props) => {
     

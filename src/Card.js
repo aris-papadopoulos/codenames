@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './card.scss';
+import './styles/card.scss';
 import { cards } from './cards';
 import word from './assets/cards/word.jpg';
 import blue_00 from './assets/cards/coder-blue-00.jpg';

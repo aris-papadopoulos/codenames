@@ -4,7 +4,7 @@ import gr from './assets/flags/greece.svg';
 import uk from './assets/flags/uk.svg';
 import { texts } from './texts';
 import { history, encodeGame } from './utilities';
-import './App.scss';
+import './styles/app.scss';
 
 function App() {
     

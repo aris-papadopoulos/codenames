@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { decodeBase64 } from './utilities';
 import { useToasts } from 'react-toast-notifications';
 import { texts } from './texts';
-import './key.scss';
+import './styles/key.scss';
 
 
 const initialKey = {encoded: ''};
