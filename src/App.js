@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import image from './agents.png';
+import main from './assets/main.png';
 import gr from './assets/flags/greece.svg';
 import uk from './assets/flags/uk.svg';
 import { texts } from './texts';
@@ -16,7 +16,7 @@ function App() {
                 <div className="typewriter">
                     <code style={{animation: `typing 2.5s steps(${texts[lang].title.length * 2}, end), blink-caret .75s step-end infinite`}}>{texts[lang].title}</code>
                 </div>
-                <img src={image} className="image-logo" alt="logo" />
+                <img src={main} className="image-logo" alt="logo" />
                 <button className="create-game" onClick={() => createNewGame(lang)}>{texts[lang].newGame}</button>
             <div className="language">
                 <p>{texts[lang].language}:</p>
