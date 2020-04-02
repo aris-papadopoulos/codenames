@@ -16,6 +16,7 @@ export const texts = {
         ok: 'OK',
         copyKeySuccess: 'Επιτυχής αντιγραφή στο clipboard',
         copyKeyFail: 'Σφάλμα αντιγραφής',
+        information: 'Πληροφορίες'
     },
     en: {
         title: 'Code_names',
@@ -34,5 +35,6 @@ export const texts = {
         ok: 'OK',
         copyKeySuccess: 'Key successfully copied to clipboard',
         copyKeyFail: 'Failed to copy key',
+        information: 'Information'
     }
 }

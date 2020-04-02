@@ -27,6 +27,7 @@ function App() {
                         </div>
                     </div>
                 </div>
+                <a className="about" href="https://github.com/aris-papadopoulos/codenames" rel="noopener noreferrer" target="_blank">{texts[lang].information}</a>
             </header>
         </div>
     );
