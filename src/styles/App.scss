@@ -35,11 +35,14 @@
     }
 }
 
+.actions {
+    width: 320px;
+}
+
 .language {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 260px;
     p {
         font-family: fantasy;
         font-size: 30px;
